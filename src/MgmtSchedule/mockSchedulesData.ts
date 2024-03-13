@@ -19,6 +19,10 @@ export const mockSchedulesData: MgmtSchedule[] = [
         guid: mockDefaultBreakfastShift.guid,
         name: mockDefaultBreakfastShift.name,
       },
+      {
+        guid: mockYesterdayBreakfastShift.guid,
+        name: mockYesterdayBreakfastShift.name,
+      },
     ],
   },
   {

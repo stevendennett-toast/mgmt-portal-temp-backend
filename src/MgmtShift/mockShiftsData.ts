@@ -582,8 +582,8 @@ export const mockTodayBreakfastShift = {
 
 export const mockYesterdayBreakfastShift = {
   guid: "6f758065-3dcc-47bd-9161-4035f39ad726",
-  name: "Test Poker Night 2",
-  description: "poker night",
+  name: "Yesterday Breakfast Shift",
+  description: "The breakfast shift for yesterday",
   hours: {
     sunday: {
       enabled: false,
