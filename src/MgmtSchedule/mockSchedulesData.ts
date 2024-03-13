@@ -9,6 +9,7 @@ export const mockSchedulesData: MgmtSchedule[] = [
   {
     datesActive: ["2024-03-12", "2024-03-13"],
     default: true,
+    current: true,
     enabled: true,
     memo: "This is the default schedule",
     guid: "default-123",
@@ -23,6 +24,7 @@ export const mockSchedulesData: MgmtSchedule[] = [
   {
     datesActive: ["2024-03-11", "2024-03-16", "2024-03-17"],
     default: false,
+    current: false,
     enabled: true,
     memo: "This is the today schedule",
     guid: "today-123",
@@ -37,6 +39,7 @@ export const mockSchedulesData: MgmtSchedule[] = [
   {
     datesActive: ["2024-03-11", "2024-03-13"],
     default: false,
+    current: false,
     enabled: true,
     memo: "This is the yesterday schedule",
     guid: "yesterday-123",
