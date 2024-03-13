@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
-import { shiftsState } from "../dataStore";
+import { schedulesState, shiftsState } from "../dataStore";
+import { v4 as uuidv4 } from "uuid";
 
 // Create a router for shift
 const router = express.Router();
@@ -23,6 +24,89 @@ router.get("/:shiftGuid", (req: Request, res: Response) => {
     results: [shift],
     errorCodes: [],
   });
+});
+
+// Creating a shift
+router.post("/", (req, res) => {
+  const { scheduleGuid, shift } = req.body;
+
+  // new shift guid
+  const shiftGuid = uuidv4();
+
+  const shiftWithGuid = { ...shift, guid: shiftGuid };
+
+  // add shift
+  shiftsState[shiftGuid] = shiftWithGuid;
+
+  // add shift to schedule
+  for (const schedule of schedulesState) {
+    if (schedule.guid === scheduleGuid) {
+      schedule.shifts.push({
+        guid: shiftWithGuid.guid,
+        name: shiftWithGuid.name,
+      });
+    }
+  }
+
+  return res.status(200);
+});
+
+// Updating a shift
+router.patch("/:shiftGuid", (req, res) => {
+  const { shiftGuid } = req.params;
+  const data = req.body;
+
+  const shift = shiftsState[shiftGuid];
+
+  if (!shift) {
+    return res.status(404).send({
+      message: "Shift not found",
+      results: [],
+      errorCodes: [],
+    });
+  }
+
+  // update shift
+  shiftsState[shiftGuid] = data;
+
+  // update shift in schedule
+  for (const schedule of schedulesState) {
+    for (const index in schedule.shifts) {
+      if (schedule.shifts[index].guid === shiftGuid) {
+        schedule.shifts[index].guid = data.guid;
+        schedule.shifts[index].name = data.name;
+      }
+    }
+  }
+
+  return res.status(200);
+});
+
+// Deleting a shift
+router.delete("/:shiftGuid", (req, res) => {
+  const { shiftGuid } = req.params;
+
+  const shift = shiftsState[shiftGuid];
+
+  if (!shift) {
+    return res.status(404).send({
+      message: "Shift not found",
+      results: [],
+      errorCodes: [],
+    });
+  }
+
+  // delete shift
+  delete shiftsState[shift.guid];
+
+  // delete shift from schedule
+  for (const schedule of schedulesState) {
+    schedule.shifts = schedule.shifts.filter(
+      (innerShift) => innerShift.guid !== shiftGuid,
+    );
+  }
+
+  return res.status(200);
 });
 
 export default router;
