@@ -2,6 +2,6 @@
 
 ## Introduction
 
-A simple node/express + TypeScript app that allows you to quickly mock up some endpoints. We simply track the data in memory.
+A simple Node/Express app that allows you to quickly mock up some endpoints for the Management Portal. We create a data store in memory and manipulate it directly via the endpoints. In the `capman-mgmt-portal-ui` repo, create your axios functions and react-query hooks as normal, but use `getMockBookingService` instead of `getBookingService` to hit this express app (http://localhost:5000).
 
-`yarn && yarn dev`
+Run `yarn && yarn dev` to start up the server
