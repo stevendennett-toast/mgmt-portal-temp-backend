@@ -21,9 +21,17 @@ router.get("/:scheduleGuid", (req: Request, res: Response) => {
     });
   }
 
+  const shiftGuids = schedule.shifts.map(({ guid }) => guid);
+
+  const updatedShifts = Object.values(shiftsState).filter((shift) =>
+    shiftGuids.includes(shift.guid),
+  );
+
+  const updatedSchedule = { ...schedule, shifts: updatedShifts };
+
   return res.send({
     message: "",
-    results: [schedule],
+    results: [updatedSchedule],
     errorCodes: [],
   });
 });
