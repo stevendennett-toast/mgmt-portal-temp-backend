@@ -48,7 +48,7 @@ router.post("/", (req, res) => {
     }
   }
 
-  return res.status(200);
+  return res.status(200).end();
 });
 
 // Updating a shift
@@ -79,7 +79,7 @@ router.patch("/:shiftGuid", (req, res) => {
     }
   }
 
-  return res.status(200);
+  return res.status(200).end();
 });
 
 // Deleting a shift
@@ -106,7 +106,7 @@ router.delete("/:shiftGuid", (req, res) => {
     );
   }
 
-  return res.status(200);
+  return res.status(200).end();
 });
 
 export default router;

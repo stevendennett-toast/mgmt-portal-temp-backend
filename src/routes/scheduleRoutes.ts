@@ -21,6 +21,7 @@ router.get("/:scheduleGuid", (req: Request, res: Response) => {
     });
   }
 
+  // get full shift config object and add to schedule
   const shiftGuids = schedule.shifts.map(({ guid }) => guid);
 
   const updatedShifts = Object.values(shiftsState).filter((shift) =>
@@ -53,7 +54,7 @@ router.post("/", (req, res) => {
     shiftsState[shift.guid] = scheduleWithGuid;
   }
 
-  return res.status(200);
+  return res.status(200).end();
 });
 
 // Duplicating a schedule
@@ -87,7 +88,7 @@ router.post("/clone/:scheduleGuid", (req, res) => {
     };
   }
 
-  return res.status(200);
+  return res.status(200).end();
 });
 
 // Updating a schedule
@@ -109,7 +110,7 @@ router.patch("/:scheduleGuid", (req, res) => {
 
   schedulesState[scheduleIndex] = data;
 
-  return res.status(200);
+  return res.status(200).end();
 });
 
 // Deleting a schedule
@@ -129,7 +130,7 @@ router.delete("/:scheduleGuid", (req, res) => {
   }
 
   delete schedulesState[scheduleIndex];
-  return res.status(200);
+  return res.status(200).end();
 });
 
 export default router;
