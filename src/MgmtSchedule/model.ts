@@ -18,6 +18,7 @@ export enum MgmtScheduleCloneEndpoints {
 export type MgmtSchedule = {
   datesActive: string[] | null;
   default: boolean;
+  current: boolean;
   enabled: boolean;
   guid: string;
   name: string;
