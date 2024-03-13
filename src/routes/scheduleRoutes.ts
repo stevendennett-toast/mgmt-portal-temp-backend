@@ -100,6 +100,7 @@ router.patch("/:scheduleGuid", (req, res) => {
   }
 
   schedulesState[scheduleIndex] = data;
+
   return res.status(200);
 });
 

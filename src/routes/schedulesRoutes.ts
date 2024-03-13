@@ -4,8 +4,6 @@ import { schedulesState } from "../dataStore";
 // Create a router for schedule
 const router = express.Router();
 
-// Define your CRUD operations
-
 // GET request for listing schedules
 router.get("/", (req: Request, res: Response) => {
   return res.send({
