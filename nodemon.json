@@ -1,0 +1,6 @@
+{
+  "watch": ["src/**/*.ts"],
+  "ext": "ts",
+  "ignore": ["src/**/*.spec.ts", "node_modules"],
+  "exec": "yarn build && node dist/index.js"
+}

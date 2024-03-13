@@ -1,0 +1,41 @@
+Arguments: 
+  /Users/steven.dennett/.volta/tools/image/node/14.21.3/bin/node /Users/steven.dennett/.volta/tools/image/yarn/1.22.19/bin/yarn.js add express dotenn
+
+PATH: 
+  /Users/steven.dennett/.volta/tools/image/yarn/1.22.19/bin:/Users/steven.dennett/.volta/tools/image/node/14.21.3/bin:/Users/steven.dennett/Library/Python/3.11/bin:/Users/steven.dennett/.volta/bin:/opt/homebrew/opt/openssl/bin:/Users/steven.dennett/.nvm/versions/node/v14.0.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Users/steven.dennett/.rover/bin:/Users/steven.dennett/Toast/git-repos/play1:/Users/steven.dennett/Library/Android/sdk/tools:/Users/steven.dennett/Library/Android/sdk/platform-tools:/Users/steven.dennett/flutter/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  14.21.3
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/dotenn: Not found
+      at Request.params.callback [as _callback] (/Users/steven.dennett/.volta/tools/image/yarn/1.22.19/lib/cli.js:66145:18)
+      at Request.self.callback (/Users/steven.dennett/.volta/tools/image/yarn/1.22.19/lib/cli.js:140890:22)
+      at Request.emit (events.js:400:28)
+      at Request.<anonymous> (/Users/steven.dennett/.volta/tools/image/yarn/1.22.19/lib/cli.js:141862:10)
+      at Request.emit (events.js:400:28)
+      at IncomingMessage.<anonymous> (/Users/steven.dennett/.volta/tools/image/yarn/1.22.19/lib/cli.js:141784:12)
+      at Object.onceWrapper (events.js:519:28)
+      at IncomingMessage.emit (events.js:412:35)
+      at endReadableNT (internal/streams/readable.js:1333:12)
+      at processTicksAndRejections (internal/process/task_queues.js:82:21)
+
+npm manifest: 
+  {
+    "name": "mgmt-portal-temp-backend",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
