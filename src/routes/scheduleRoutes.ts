@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import { schedulesState, shiftsState } from "../dataStore";
 import { v4 as uuidv4 } from "uuid";
+import { MgmtSchedule } from "../MgmtSchedule/model";
 
 // Create a router for schedule
 const router = express.Router();
@@ -37,22 +38,26 @@ router.get("/:scheduleGuid", (req: Request, res: Response) => {
   });
 });
 
-// Creating a schedule
+// Creating an empty schedule
 router.post("/", (req, res) => {
-  const data = req.body;
+  const { name } = req.body;
 
-  // new shift guid
+  // new schedule guid
   const scheduleGuid = uuidv4();
 
-  const scheduleWithGuid = { ...data, guid: scheduleGuid };
+  const scheduleWithGuid: MgmtSchedule = {
+    name,
+    guid: scheduleGuid,
+    enabled: false,
+    current: false,
+    datesActive: null,
+    default: false,
+    memo: null,
+    shifts: [],
+  };
 
   // add schedule
   schedulesState.push(scheduleWithGuid);
-
-  // add any shifts from schedule
-  for (const shift of scheduleWithGuid.shifts) {
-    shiftsState[shift.guid] = scheduleWithGuid;
-  }
 
   return res.status(200).end();
 });
