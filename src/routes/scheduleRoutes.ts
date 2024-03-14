@@ -59,7 +59,7 @@ router.post("/", (req, res) => {
   // add schedule
   schedulesState.push(scheduleWithGuid);
 
-  return res.status(200).end();
+  return res.status(200).send({ scheduleGuid });
 });
 
 // Duplicating a schedule
