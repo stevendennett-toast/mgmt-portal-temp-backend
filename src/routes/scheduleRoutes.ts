@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import { schedulesState, shiftsState } from "../dataStore";
 import { v4 as uuidv4 } from "uuid";
 import { MgmtSchedule } from "../MgmtSchedule/model";
+import { cloneDeep } from "lodash";
 
 // Create a router for schedule
 const router = express.Router();
@@ -70,11 +71,11 @@ router.post("/", (req, res) => {
 router.post("/clone/:scheduleGuid", (req, res) => {
   const { scheduleGuid } = req.params;
 
-  const schedule = schedulesState.find(
+  const scheduleToDuplicate = schedulesState.find(
     (schedule) => schedule.guid === scheduleGuid,
   );
 
-  if (!schedule) {
+  if (!scheduleToDuplicate) {
     return res.status(404).send({
       message: "Schedule not found",
       results: [],
@@ -82,20 +83,24 @@ router.post("/clone/:scheduleGuid", (req, res) => {
     });
   }
 
-  schedulesState.push({
-    ...schedule,
-    name: schedule.name + ` Copy`,
+  const duplicatedSchedule = {
+    ...cloneDeep(scheduleToDuplicate),
+    name: scheduleToDuplicate.name + ` Copy`,
     guid: uuidv4(),
-  });
+  };
 
-  for (const shift of schedule.shifts) {
-    const shiftToDuplicate = shiftsState[shift.guid];
+  for (const [index, shift] of duplicatedSchedule.shifts.entries()) {
     const newShiftGuid = uuidv4();
-    shiftsState[newShiftGuid] = {
-      ...shiftToDuplicate,
-      name: shiftToDuplicate.name + " Copy",
-    };
+    const duplicatedShift = cloneDeep(shiftsState[shift.guid]);
+    duplicatedShift.name = duplicatedShift.name + " Copy";
+    duplicatedShift.guid = newShiftGuid;
+
+    duplicatedSchedule.shifts[index] = duplicatedShift;
+
+    shiftsState[newShiftGuid] = duplicatedShift;
   }
+
+  schedulesState.push(duplicatedSchedule);
 
   return res.status(200).send({
     message: "",
