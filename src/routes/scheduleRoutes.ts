@@ -138,7 +138,7 @@ router.delete("/:scheduleGuid", (req, res) => {
     });
   }
 
-  delete schedulesState[scheduleIndex];
+  schedulesState.splice(scheduleIndex, 1);
   return res.status(200).end();
 });
 

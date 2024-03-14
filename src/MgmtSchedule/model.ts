@@ -8,7 +8,7 @@ export enum MgmtScheduleEndpoints {
   GET = "v1/mgmt/schedule/{scheduleGuid}",
   POST = "v1/mgmt/schedule",
   PATCH = "v1/mgmt/schedule/{scheduleGuid}",
-  DELETE = "v1/schedule/{scheduleGuid}",
+  DELETE = "v1/mgmt/schedule/{scheduleGuid}",
 }
 
 export enum MgmtScheduleCloneEndpoints {
