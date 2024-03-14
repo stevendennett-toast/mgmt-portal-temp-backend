@@ -97,7 +97,11 @@ router.post("/clone/:scheduleGuid", (req, res) => {
     };
   }
 
-  return res.status(200).end();
+  return res.status(200).send({
+    message: "",
+    results: [{ scheduleGuid }],
+    errorCodes: [],
+  });
 });
 
 // Updating a schedule
