@@ -1,7 +1,6 @@
 export type MgmtShift = {
   guid: string;
   name: string;
-  description: string;
   hours: MgmtBookableHours;
   onlineWaitlistEnabled: boolean;
   onlineWaitlistDisableThreshold: number;

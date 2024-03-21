@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import { schedulesState, shiftsState } from "../dataStore";
 import { v4 as uuidv4 } from "uuid";
+import { mockDefaultBreakfastShift } from "../MgmtShift/mockShiftsData";
 
 // Create a router for shift
 const router = express.Router();
@@ -28,12 +29,17 @@ router.get("/:shiftGuid", (req: Request, res: Response) => {
 
 // Creating a shift
 router.post("/", (req, res) => {
-  const { scheduleGuid, shift } = req.body;
+  const { scheduleGuid, name, hours } = req.body;
 
   // new shift guid
   const shiftGuid = uuidv4();
 
-  const shiftWithGuid = { ...shift, guid: shiftGuid };
+  const shiftWithGuid = {
+    ...shiftsState[mockDefaultBreakfastShift.guid],
+    name,
+    hours,
+    guid: shiftGuid,
+  };
 
   // add shift
   shiftsState[shiftGuid] = shiftWithGuid;
@@ -48,7 +54,11 @@ router.post("/", (req, res) => {
     }
   }
 
-  return res.status(200).end();
+  return res.status(200).send({
+    message: "",
+    results: [],
+    errorCodes: [],
+  });
 });
 
 // Updating a shift

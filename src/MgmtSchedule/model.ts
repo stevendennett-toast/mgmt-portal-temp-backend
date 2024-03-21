@@ -22,7 +22,10 @@ export type MgmtSchedule = {
   enabled: boolean;
   guid: string;
   name: string;
-  memo: string | null;
+  memo: {
+    title: string | null;
+    description: string | null;
+  } | null;
   shifts: {
     guid: string;
     name: string;

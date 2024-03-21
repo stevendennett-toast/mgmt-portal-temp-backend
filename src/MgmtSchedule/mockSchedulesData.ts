@@ -11,7 +11,7 @@ export const mockSchedulesData: MgmtSchedule[] = [
     default: true,
     current: true,
     enabled: true,
-    memo: "This is the default schedule",
+    memo: { title: "This is the default schedule", description: "" },
     guid: "default-123",
     name: "Default",
     shifts: [
@@ -30,7 +30,7 @@ export const mockSchedulesData: MgmtSchedule[] = [
     default: false,
     current: false,
     enabled: true,
-    memo: "This is the today schedule",
+    memo: { title: "This is the today schedule", description: "" },
     guid: "today-123",
     name: "Today",
     shifts: [
@@ -45,7 +45,7 @@ export const mockSchedulesData: MgmtSchedule[] = [
     default: false,
     current: false,
     enabled: true,
-    memo: "This is the yesterday schedule",
+    memo: { title: "This is the yesterday schedule", description: "" },
     guid: "yesterday-123",
     name: "Yesterday",
     shifts: [
