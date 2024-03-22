@@ -1,7 +1,8 @@
-export const mockDefaultBreakfastShift = {
+import { MgmtShift } from "./model";
+
+export const mockDefaultBreakfastShift: MgmtShift = {
   guid: "default-breakfast",
   name: "Default Breakfast",
-  description: "asdf 2 3",
   hours: {
     sunday: {
       enabled: true,
@@ -39,6 +40,10 @@ export const mockDefaultBreakfastShift = {
       end: "20:00:00.000",
     },
   },
+  minPartySize: 1,
+  maxPartySize: 8,
+  waitlistMinPartySize: 1,
+  waitlistMaxPartySize: 8,
   onlineWaitlistEnabled: true,
   onlineWaitlistDisableThreshold: 300,
   onlineReservationsEnabled: true,
@@ -355,10 +360,9 @@ export const mockDefaultBreakfastShift = {
   },
 };
 
-export const mockTodayBreakfastShift = {
+export const mockTodayBreakfastShift: MgmtShift = {
   guid: "099a7c3b-8667-48b9-bfd3-62bc207f3457",
   name: "Dinner",
-  description: "dinner time",
   hours: {
     sunday: {
       enabled: false,
@@ -396,6 +400,10 @@ export const mockTodayBreakfastShift = {
       end: "12:00:00.000",
     },
   },
+  minPartySize: 1,
+  maxPartySize: 8,
+  waitlistMinPartySize: 1,
+  waitlistMaxPartySize: 8,
   onlineWaitlistEnabled: false,
   onlineWaitlistDisableThreshold: 300,
   onlineReservationsEnabled: false,
@@ -580,10 +588,9 @@ export const mockTodayBreakfastShift = {
   },
 };
 
-export const mockYesterdayBreakfastShift = {
+export const mockYesterdayBreakfastShift: MgmtShift = {
   guid: "6f758065-3dcc-47bd-9161-4035f39ad726",
   name: "Yesterday Breakfast Shift",
-  description: "The breakfast shift for yesterday",
   hours: {
     sunday: {
       enabled: false,
@@ -621,6 +628,10 @@ export const mockYesterdayBreakfastShift = {
       end: "12:00:00.000",
     },
   },
+  minPartySize: 1,
+  maxPartySize: 8,
+  waitlistMinPartySize: 1,
+  waitlistMaxPartySize: 8,
   onlineWaitlistEnabled: false,
   onlineWaitlistDisableThreshold: 300,
   onlineReservationsEnabled: false,
