@@ -41,7 +41,7 @@ export const mockSchedulesData: MgmtSchedule[] = [
     ],
   },
   {
-    datesActive: ["2024-03-11", "2024-03-13"],
+    datesActive: ["2024-03-07", "2024-03-08"],
     default: false,
     current: false,
     enabled: true,
