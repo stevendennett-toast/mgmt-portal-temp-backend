@@ -110,6 +110,34 @@ router.post("/clone/:scheduleGuid", (req, res) => {
 });
 
 // Updating a schedule
+router.patch("/default", (req, res) => {
+  const data = req.body;
+  const { guid } = data;
+
+  const scheduleIndex = schedulesState.findIndex(
+    (schedule) => schedule.guid === guid,
+  );
+
+  if (scheduleIndex === -1) {
+    return res.status(404).send({
+      message: "Schedule not found",
+      results: [],
+      errorCodes: [],
+    });
+  }
+
+  for (const schedule of schedulesState) {
+    if (schedule.guid === guid) {
+      schedule.default = true;
+    } else {
+      schedule.default = false;
+    }
+  }
+
+  return res.status(200).end();
+});
+
+// Updating a schedule
 router.patch("/:scheduleGuid", (req, res) => {
   const { scheduleGuid } = req.params;
   const data = req.body;
