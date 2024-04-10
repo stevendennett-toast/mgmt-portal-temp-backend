@@ -7,7 +7,7 @@ import { MgmtSchedule } from "./model";
 
 export const mockSchedulesData: MgmtSchedule[] = [
   {
-    datesActive: ["2024-03-12", "2024-03-13"],
+    datesActive: ["2024-03-29", "2024-03-30"],
     default: true,
     current: true,
     enabled: true,
@@ -26,7 +26,7 @@ export const mockSchedulesData: MgmtSchedule[] = [
     ],
   },
   {
-    datesActive: ["2024-03-11", "2024-03-16", "2024-03-17"],
+    datesActive: ["2024-04-07", "2024-04-01"],
     default: false,
     current: false,
     enabled: true,
@@ -41,7 +41,7 @@ export const mockSchedulesData: MgmtSchedule[] = [
     ],
   },
   {
-    datesActive: ["2024-03-07", "2024-03-08"],
+    datesActive: ["2024-04-07", "2024-04-02"],
     default: false,
     current: false,
     enabled: true,
