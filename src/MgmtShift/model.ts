@@ -63,7 +63,7 @@ export type MgmtTableBookable = AvailabilityFields & {
   guid: string;
 };
 
-export type MgmtCombinedTableBookable = AvailabilityFields & {
+type MgmtCombinedTableBookable = AvailabilityFields & {
   guid: string;
   name: string;
   minCapacity: number;
