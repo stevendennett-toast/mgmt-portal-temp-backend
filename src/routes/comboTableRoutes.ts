@@ -31,24 +31,20 @@ router.get("/:comboTableGuid", (req: Request, res: Response) => {
 
 // Creating a combo table
 router.post("/", (req, res) => {
-  const { name, maxCapacity, minCapacity, tables, serviceAreaGroups } =
-    req.body;
+  const { existingComboTables, ...data } = req.body;
 
   // new combo table guid
   const comboTableGuid = uuidv4();
 
-  const tablesWithNames = tables.map((tableGuid: string) => ({
+  const tablesWithNames = data.tables.map((tableGuid: string) => ({
     guid: tableGuid,
     name: `table ${tableGuid}`,
   }));
 
   const comboTableWithGuid: MgmtCombinedTableBookable = {
-    name,
+    ...data,
     guid: comboTableGuid,
-    maxCapacity,
-    minCapacity,
     tables: tablesWithNames,
-    serviceAreaGroups,
   };
 
   // add combo table
@@ -78,7 +74,13 @@ router.patch("/:comboTableGuid", (req, res) => {
     });
   }
 
-  comboTablesState[comboTableIndex] = data;
+  comboTablesState[comboTableIndex] = {
+    ...data,
+    tables: data.tables.map((tableGuid: string) => ({
+      guid: tableGuid,
+      name: tableGuid.slice(0, 3),
+    })),
+  };
 
   return res.status(200).end();
 });
